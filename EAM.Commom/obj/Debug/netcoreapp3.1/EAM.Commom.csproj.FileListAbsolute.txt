@@ -1,0 +1,8 @@
+E:\SEM-6\EAM\EAM\EAM.Commom\bin\Debug\netcoreapp3.1\EAM.Commom.deps.json
+E:\SEM-6\EAM\EAM\EAM.Commom\bin\Debug\netcoreapp3.1\EAM.Commom.dll
+E:\SEM-6\EAM\EAM\EAM.Commom\bin\Debug\netcoreapp3.1\EAM.Commom.pdb
+E:\SEM-6\EAM\EAM\EAM.Commom\obj\Debug\netcoreapp3.1\EAM.Commom.csprojAssemblyReference.cache
+E:\SEM-6\EAM\EAM\EAM.Commom\obj\Debug\netcoreapp3.1\EAM.Commom.AssemblyInfoInputs.cache
+E:\SEM-6\EAM\EAM\EAM.Commom\obj\Debug\netcoreapp3.1\EAM.Commom.AssemblyInfo.cs
+E:\SEM-6\EAM\EAM\EAM.Commom\obj\Debug\netcoreapp3.1\EAM.Commom.dll
+E:\SEM-6\EAM\EAM\EAM.Commom\obj\Debug\netcoreapp3.1\EAM.Commom.pdb
