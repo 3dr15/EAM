@@ -57,7 +57,7 @@ namespace EAM.API
                 endpoints.MapControllers();
             });
 
-            // DAL.Context.PrepDB();
+            // var prep = new DAL.Context.PrepDB();
         }
     }
 }

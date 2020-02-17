@@ -32,7 +32,9 @@ namespace EAM.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserRole>> GetUserRole(int id)
         {
-            var userRole = await _context.UserRoles.FindAsync(id);
+            var userRole = await _context.UserRoles
+                .Include(u => u.Users)
+                .FirstOrDefaultAsync(u => u.UserRoleID == id);
 
             if (userRole == null)
             {

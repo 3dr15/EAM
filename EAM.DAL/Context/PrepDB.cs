@@ -5,11 +5,11 @@ using System.Text;
 
 namespace EAM.DAL.Context
 {
-    public static class PrepDB
+    public class PrepDB
     {
         private readonly EamContext _context;
-
-        public static PrepDB(EamContext context)
+        
+        public PrepDB(EamContext context)
         {
             _context = context;
             SeedDB();
@@ -17,9 +17,9 @@ namespace EAM.DAL.Context
 
         private void SeedDB()
         {
-            if(this.context.UserRoles == null || this.context.UserRoles.ToList().Count() == 0)
+            if(this._context.UserRoles == null || this._context.UserRoles.ToList().Count() == 0)
             {
-                this.context.UserRoles.AddRange(
+                this._context.UserRoles.AddRange(
                     new Entity.UserRole { Role = "Administrator"},
                     new Entity.UserRole { Role = "SystemAdministrator"},
                     new Entity.UserRole { Role = "Management"},

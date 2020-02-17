@@ -9,3 +9,5 @@ E:\SEM-6\EAM\EAM\EAM.DAL\bin\Debug\netcoreapp3.1\EAM.Commom.pdb
 E:\SEM-6\EAM\EAM\EAM.DAL\obj\Debug\netcoreapp3.1\EAM.DAL.csproj.CopyComplete
 E:\SEM-6\EAM\EAM\EAM.DAL\obj\Debug\netcoreapp3.1\EAM.DAL.dll
 E:\SEM-6\EAM\EAM\EAM.DAL\obj\Debug\netcoreapp3.1\EAM.DAL.pdb
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Debug\netcoreapp3.1\EAM.DAL.runtimeconfig.json
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Debug\netcoreapp3.1\EAM.DAL.runtimeconfig.dev.json
