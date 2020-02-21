@@ -1,0 +1,13 @@
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Release\netcoreapp3.1\EAM.DAL.deps.json
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Release\netcoreapp3.1\EAM.DAL.runtimeconfig.json
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Release\netcoreapp3.1\EAM.DAL.runtimeconfig.dev.json
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Release\netcoreapp3.1\EAM.DAL.dll
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Release\netcoreapp3.1\EAM.DAL.pdb
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Release\netcoreapp3.1\EAM.Commom.dll
+E:\SEM-6\EAM\EAM\EAM.DAL\bin\Release\netcoreapp3.1\EAM.Commom.pdb
+E:\SEM-6\EAM\EAM\EAM.DAL\obj\Release\netcoreapp3.1\EAM.DAL.csprojAssemblyReference.cache
+E:\SEM-6\EAM\EAM\EAM.DAL\obj\Release\netcoreapp3.1\EAM.DAL.AssemblyInfoInputs.cache
+E:\SEM-6\EAM\EAM\EAM.DAL\obj\Release\netcoreapp3.1\EAM.DAL.AssemblyInfo.cs
+E:\SEM-6\EAM\EAM\EAM.DAL\obj\Release\netcoreapp3.1\EAM.DAL.csproj.CopyComplete
+E:\SEM-6\EAM\EAM\EAM.DAL\obj\Release\netcoreapp3.1\EAM.DAL.dll
+E:\SEM-6\EAM\EAM\EAM.DAL\obj\Release\netcoreapp3.1\EAM.DAL.pdb

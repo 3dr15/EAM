@@ -1,0 +1,13 @@
+E:\SEM-6\EAM\EAM\EAM.BLL\bin\Release\netcoreapp3.1\EAM.BLL.deps.json
+E:\SEM-6\EAM\EAM\EAM.BLL\bin\Release\netcoreapp3.1\EAM.BLL.dll
+E:\SEM-6\EAM\EAM\EAM.BLL\bin\Release\netcoreapp3.1\EAM.BLL.pdb
+E:\SEM-6\EAM\EAM\EAM.BLL\bin\Release\netcoreapp3.1\EAM.Commom.dll
+E:\SEM-6\EAM\EAM\EAM.BLL\bin\Release\netcoreapp3.1\EAM.DAL.dll
+E:\SEM-6\EAM\EAM\EAM.BLL\bin\Release\netcoreapp3.1\EAM.Commom.pdb
+E:\SEM-6\EAM\EAM\EAM.BLL\bin\Release\netcoreapp3.1\EAM.DAL.pdb
+E:\SEM-6\EAM\EAM\EAM.BLL\obj\Release\netcoreapp3.1\EAM.BLL.csprojAssemblyReference.cache
+E:\SEM-6\EAM\EAM\EAM.BLL\obj\Release\netcoreapp3.1\EAM.BLL.AssemblyInfoInputs.cache
+E:\SEM-6\EAM\EAM\EAM.BLL\obj\Release\netcoreapp3.1\EAM.BLL.AssemblyInfo.cs
+E:\SEM-6\EAM\EAM\EAM.BLL\obj\Release\netcoreapp3.1\EAM.BLL.csproj.CopyComplete
+E:\SEM-6\EAM\EAM\EAM.BLL\obj\Release\netcoreapp3.1\EAM.BLL.dll
+E:\SEM-6\EAM\EAM\EAM.BLL\obj\Release\netcoreapp3.1\EAM.BLL.pdb

@@ -10,5 +10,6 @@ namespace EAM.DAL.Entity
         public string RFID { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
+        // public List<Attendance> Attendances { get; set; }
     }
 }

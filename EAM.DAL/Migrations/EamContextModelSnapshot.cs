@@ -106,7 +106,7 @@ namespace EAM.DAL.Migrations
             modelBuilder.Entity("EAM.DAL.Entity.Attendance", b =>
                 {
                     b.HasOne("EAM.DAL.Entity.Card", "Card")
-                        .WithMany()
+                        .WithMany("Attendances")
                         .HasForeignKey("CardID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

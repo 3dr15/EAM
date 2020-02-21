@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EAM.API.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,7 @@ namespace EAM.API
             services.AddDbContext<DAL.Context.EamContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"))
             );
+            // services.AddScoped<RFID>();
             services.AddControllers();
         }
 

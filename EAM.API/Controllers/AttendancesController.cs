@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EAM.DAL.Context;
 using EAM.DAL.Entity;
+using EAM.API.Model;
 
 namespace EAM.API.Controllers
 {
@@ -21,16 +22,14 @@ namespace EAM.API.Controllers
             _context = context;
         }
 
-        // GET: api/Attendances
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Attendance>>> GetAttendances()
+        public async Task<ActionResult<IEnumerable<DAL.Entity.Attendance>>> GetAttendances()
         {
-            return await _context.Attendances.ToListAsync();
+            return await _context.Attendances.Include(a => a.Card).ToListAsync();
         }
 
-        // GET: api/Attendances/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Attendance>> GetAttendance(int id)
+        public async Task<ActionResult<DAL.Entity.Attendance>> GetAttendance(int id)
         {
             var attendance = await _context.Attendances.FindAsync(id);
 
@@ -42,11 +41,8 @@ namespace EAM.API.Controllers
             return attendance;
         }
 
-        // PUT: api/Attendances/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAttendance(int id, Attendance attendance)
+        public async Task<IActionResult> PutAttendance(int id, DAL.Entity.Attendance attendance)
         {
             if (id != attendance.AttendanceID)
             {
@@ -74,21 +70,21 @@ namespace EAM.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Attendances
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Attendance>> PostAttendance(Attendance attendance)
+        public async Task<ActionResult<RFID>> PostAttendance([FromBody]RFID RFID)
         {
-            _context.Attendances.Add(attendance);
+            var card = _context.Cards.FirstOrDefault(c => c.RFID == RFID.UniqueIdentification);
+            DAL.Entity.Attendance attendance = new DAL.Entity.Attendance();
+            attendance.AttendanceID = 0;
+            attendance.CardID = card.CardID;
+            attendance.DateTime = new DateTimeOffset(DateTime.Now.ToUniversalTime());
+            var markAttendance = _context.Attendances.Add(attendance);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAttendance", new { id = attendance.AttendanceID }, attendance);
+            return Ok();
         }
 
-        // DELETE: api/Attendances/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Attendance>> DeleteAttendance(int id)
+        public async Task<ActionResult<DAL.Entity.Attendance>> DeleteAttendance(int id)
         {
             var attendance = await _context.Attendances.FindAsync(id);
             if (attendance == null)

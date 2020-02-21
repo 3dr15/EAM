@@ -7,6 +7,9 @@ namespace EAM.API.TaskHandler
 {
     public class AttendanceHandler
     {
+        public AttendanceHandler()
+        {
 
+        }
     }
 }
