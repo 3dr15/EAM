@@ -21,18 +21,16 @@ namespace EAM.API.Controllers
             _context = context;
         }
 
-        // GET: api/Cards
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Card>>> GetCards()
         {
             return await _context.Cards.ToListAsync();
         }
 
-        // GET: api/Cards/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Card>> GetCard(int id)
+        public async Task<ActionResult<Card>> GetCard(string id)
         {
-            var card = await _context.Cards.FindAsync(id);
+            var card = await _context.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.RFID == id);
 
             if (card == null)
             {
@@ -42,18 +40,32 @@ namespace EAM.API.Controllers
             return card;
         }
 
-        // PUT: api/Cards/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCard(int id, Card card)
+        public async Task<IActionResult> PutCard(string id, Card card)
         {
-            if (id != card.CardID)
+            var user = _context.Users.Find(card.UserID);
+            if(user == null)
+            {
+                return Ok(new { errorMessage = "User does not Exist." });
+            }
+            var existingCard = _context.Cards.Any(c => c.RFID == card.RFID);
+            if (existingCard)
+            {
+                return Ok(new { errorMessage = "RFID Card already Exist" });
+            }
+            var existingCardHolder = _context.Cards.Any(c => c.UserID == card.UserID);
+            if (!existingCardHolder)
+            {
+                return Ok(new { errorMessage = "No RFID Card was alloted to this user before, Add new card" });
+            }
+            var updatedCard = await _context.Cards.FirstOrDefaultAsync(c => c.UserID == card.UserID);
+            updatedCard.RFID = card.RFID;
+            if (id != card.RFID || updatedCard == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(card).State = EntityState.Modified;
+            _context.Entry(updatedCard).State = EntityState.Modified;
 
             try
             {
@@ -74,23 +86,31 @@ namespace EAM.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Cards
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Card>> PostCard(Card card)
         {
+            var findUser = _context.Users.Find(card.UserID);
+            if (findUser == null)
+            {
+                return Ok(new { errorMessage = "User does not Exist." });
+            }
+            var existingCard = _context.Cards.Any(c => c.RFID == card.RFID || c.UserID == card.UserID);
+            if (existingCard)
+            {
+                return Ok(new { errorMessage = "RFID Card already Exist" });
+            }
+            
             _context.Cards.Add(card);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCard", new { id = card.CardID }, card);
         }
 
-        // DELETE: api/Cards/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Card>> DeleteCard(int id)
+        public async Task<ActionResult<Card>> DeleteCard(string id)
         {
-            var card = await _context.Cards.FindAsync(id);
+            var card = await _context.Cards.FirstOrDefaultAsync(c => c.RFID == id);
+            // var card = await _context.Cards.FindAsync(id);
             if (card == null)
             {
                 return NotFound();
@@ -102,9 +122,9 @@ namespace EAM.API.Controllers
             return card;
         }
 
-        private bool CardExists(int id)
+        private bool CardExists(string id)
         {
-            return _context.Cards.Any(e => e.CardID == id);
+            return _context.Cards.Any(e => e.RFID == id);
         }
     }
 }
