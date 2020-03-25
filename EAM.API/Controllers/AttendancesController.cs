@@ -22,6 +22,12 @@ namespace EAM.API.Controllers
             _context = context;
         }
 
+        [HttpGet("ping")]
+        public IActionResult PingTest()
+        {
+            return Ok(new { successMessage = "Successfull" } );
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DAL.Entity.Attendance>>> GetAttendances()
         {
@@ -69,6 +75,28 @@ namespace EAM.API.Controllers
 
             return NoContent();
         }
+
+        [HttpPost("{list}")]
+        public async Task<IActionResult> PostAttendanceList([FromBody]List<RFIDPartial> ListRFID)
+        {
+            ListRFID = ListRFID.ToList();
+            foreach (var RFID in ListRFID)
+            {
+                var card = _context.Cards.FirstOrDefault(c => c.RFID == RFID.UniqueIdentification);
+                if (card != null)
+                {
+                    DAL.Entity.Attendance attendance = new DAL.Entity.Attendance();
+                    attendance.AttendanceID = 0;
+                    attendance.CardID = card.CardID;
+                    attendance.DateTime = new DateTimeOffset(Convert.ToDateTime(RFID.DateTimeUTC));
+                    var markAttendance = _context.Attendances.Add(attendance);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            return Ok();
+        }
+
+
 
         [HttpPost]
         public async Task<ActionResult<RFID>> PostAttendance([FromBody]RFID RFID)
